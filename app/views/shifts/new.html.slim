@@ -1,0 +1,4 @@
+= simple_form_for [@shift] do |f|
+  = f.input :start_date
+  = f.input :status, collection: User.all
+  = f.submit "add a shift", class: "btn btn-primary"
