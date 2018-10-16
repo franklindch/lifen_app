@@ -18,7 +18,8 @@ gem 'sass-rails'
 gem 'slim'
 gem 'simple_form'
 gem 'uglifier'
-gem 'webpacker', '~> 3.5'
+# gem 'webpacker', '~> 3.5'
+gem 'yarn'
 
 group :development do
   gem 'web-console', '>= 3.3.0'
