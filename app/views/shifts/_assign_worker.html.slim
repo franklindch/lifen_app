@@ -1,0 +1,7 @@
+- if User.all == []
+    p Please 'add workers to the planning'.
+- else
+  = simple_form_for [shift], url: shift_assign_worker_path(shift), method: :patch  do |f|
+      = f.input :user_id, collection: User.order('first_name ASC'), include_blank: "Which worker is associated...", label: false, label_method: lambda { |user| "Worker #{user&.first_name&.capitalize} | #{user.status}" }
+      = f.hidden_field :shift_id, value: shift.id
+      = f.submit "Assign worker", class: "btn btn-primary"

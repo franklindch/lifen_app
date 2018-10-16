@@ -1,0 +1,4 @@
+= simple_form_for [@user] do |f|
+  = f.input :first_name, label: 'First name'
+  = f.input :status, collection: User.statuses.keys.map { |w| [t("views.genders.#{w}"), w] }, label: 'Status'
+  = f.submit "Submit", class: "btn btn-primary mt-4"

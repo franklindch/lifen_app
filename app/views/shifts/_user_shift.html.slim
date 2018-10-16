@@ -1,0 +1,27 @@
+
+- if shift.user
+  - @user = shift.user
+  .btn.btn-outline-primary
+    = link_to 'Edit Worker', edit_user_path(shift.user), data: {target: "#modal#{shift.id}", toggle: 'modal'}, input_html: {id: "modal#{shift.id}"}
+  .modal.fade id="modal#{shift.id}" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="modal#{shift.id}Title"
+    .modal-dialog.modal-dialog-centered role="document"
+      .modal-content
+        .modal-body
+          = render 'users/form', user: @user
+
+        .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button" Fermer
+
+- else
+  p No worker yet.
+  .btn.btn-outline-primary
+    = link_to 'Assign Worker', shift_assign_worker_path(shift), data: {target: "#modal#{shift.id}", toggle: 'modal'}, input_html: {id: "modal#{shift.id}"}
+  .modal.fade id="modal#{shift.id}" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="modal#{shift.id}Title"
+    .modal-dialog.modal-dialog-centered role="document"
+      .modal-content
+        .modal-body
+          = render 'shifts/assign_worker', shift: shift
+
+        .modal-footer
+        button.btn.btn-secondary data-dismiss="modal" type="button" Fermer
+
