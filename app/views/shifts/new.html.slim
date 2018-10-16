@@ -1,0 +1,18 @@
+.d-flex.justify-content-between.flex-wrap.flex-md-nowrap.align-items-center.pt-2.mb-1
+      h1.mt-5.mb-3 Planning 1
+
+.row
+  .col-md-3.mt-2
+    = simple_form_for [@shift] do |f|
+      = f.input :start_date, as: :string, input_html: {class: 'flatpickr'}, label: 'Select a shift date'
+      .btn-toolbar.mb-md-0
+        .mr-2.d-flex.justify-content-around
+          = f.submit "Add shift", class: "btn btn-primary"
+          = link_to 'Add Worker to the planning', new_user_path, class: 'btn btn-outline-primary'
+
+  .col-md-8.mt-3
+    = month_calendar events: @shifts, attribute: :start_date do |date, shifts|
+      = date
+
+      - shifts.each do |shift|
+        = render 'user_shift', shift: shift
